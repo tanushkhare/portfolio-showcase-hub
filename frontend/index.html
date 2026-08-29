@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanush Khare — Systems & AI Microservices Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #0b1120; color: #f8fafc; min-height: 100vh; padding-bottom: 3rem; }
+    .navbar { background: #0f172a; border-bottom: 1px solid #1e293b; padding: 1.25rem 2rem; position: sticky; top: 0; z-index: 50; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; }
+    .logo { font-weight: 800; font-size: 1.25rem; color: #38bdf8; display: flex; align-items: center; gap: 0.6rem; }
+    .badge { background: #0284c7; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 9999px; font-weight: 600; }
+    
+    .hero { max-width: 1300px; margin: 2.5rem auto 1.5rem; padding: 0 1.5rem; }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .hero p { color: #94a3b8; font-size: 1.1rem; max-width: 800px; line-height: 1.6; }
+    
+    .metrics-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; max-width: 1300px; margin: 1.5rem auto; padding: 0 1.5rem; }
+    .metric-box { background: #1e293b; border: 1px solid #334155; border-radius: 0.75rem; padding: 1.25rem; text-align: center; }
+    .metric-box .label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: 600; }
+    .metric-box .val { font-size: 1.8rem; font-weight: 800; color: #38bdf8; margin-top: 0.25rem; }
+
+    .controls { max-width: 1300px; margin: 2rem auto 1.5rem; padding: 0 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pill { background: #1e293b; border: 1px solid #334155; color: #94a3b8; padding: 0.45rem 1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .pill.active, .pill:hover { background: #2563eb; color: #fff; border-color: #2563eb; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.25rem; max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 0.75rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-3px); border-color: #38bdf8; }
+    .card-tag { font-size: 0.75rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em; }
+    .card-title { font-size: 1.15rem; font-weight: 700; margin: 0.4rem 0 0.5rem; color: #f8fafc; }
+    .card-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.5; margin-bottom: 1.25rem; flex-grow: 1; }
+    
+    .card-actions { display: flex; gap: 0.75rem; }
+    .btn { flex: 1; text-align: center; padding: 0.6rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: 0.2s; }
+    .btn-primary { background: #2563eb; color: white; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-secondary { background: #334155; color: #cbd5e1; }
+    .btn-secondary:hover { background: #475569; color: white; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">⚡ Tanush Khare</div>
+      <div class="badge">Master Portfolio Hub</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Microservice & AI Systems Portfolio</h1>
+    <p>Unified directory of all 23 production services, distributed microservices, dense vector search engines, and real-time streaming pipelines.</p>
+  </section>
+
+  <section class="metrics-bar">
+    <div class="metric-box">
+      <div class="label">Production Repositories</div>
+      <div class="val">23 / 23</div>
+    </div>
+    <div class="metric-box">
+      <div class="label">Automated Test Suites</div>
+      <div class="val" style="color: #34d399;">100% Passed</div>
+    </div>
+    <div class="metric-box">
+      <div class="label">Live Microservices</div>
+      <div class="val">Vercel Edge</div>
+    </div>
+    <div class="metric-box">
+      <div class="label">Core Architecture</div>
+      <div class="val" style="font-size: 1.2rem; margin-top: 0.5rem;">FastAPI • RAG • PySpark</div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="filter-pills" id="filterContainer">
+      <button class="pill active" onclick="filterCategory('all')">All Domains</button>
+      <button class="pill" onclick="filterCategory('AI')">AI & NLP</button>
+      <button class="pill" onclick="filterCategory('Distributed')">Distributed Systems</button>
+      <button class="pill" onclick="filterCategory('Security')">Security & DataOps</button>
+      <button class="pill" onclick="filterCategory('IoT')">IoT & Spatial</button>
+    </div>
+  </div>
+
+  <main class="grid" id="projectGrid"></main>
+
+  <script>
+    const projects = [
+      { id: "01", name: "AI Resume & Skill Gap Analyzer", cat: "AI", desc: "spaCy NER PDF resume parser with cosine similarity matching against target job descriptions.", web: "https://ai-resume-analyzer-web-nine.vercel.app", repo: "https://github.com/tanushkhare/ai-resume-analyzer" },
+      { id: "02", name: "Autonomous AI Research Assistant", cat: "AI", desc: "Agentic multi-hop research pipeline querying arXiv and web sources with confidence scoring.", web: "https://autonomous-research-assistant-web.vercel.app", repo: "https://github.com/tanushkhare/autonomous-research-assistant" },
+      { id: "03a", name: "Async Real-Time Chatbot", cat: "AI", desc: "Asynchronous WebSocket streaming session assistant with tokenized streaming responses.", web: "https://realtime-chatbot-two.vercel.app", repo: "https://github.com/tanushkhare/realtime-chatbot" },
+      { id: "03b", name: "Vector RAG QA System", cat: "AI", desc: "Dense semantic vector retrieval engine using ChromaDB and text chunking similarity search.", web: "https://vector-rag-qa-system.vercel.app", repo: "https://github.com/tanushkhare/vector-rag-qa-system" },
+      { id: "04a", name: "AI Meeting Summarizer", cat: "AI", desc: "Transcript summarization and action item extractor with agenda and sentiment synthesis.", web: "https://ai-meeting-summarizer-web.vercel.app", repo: "https://github.com/tanushkhare/ai-meeting-summarizer" },
+      { id: "04b", name: "Real-Time ETL Dashboard", cat: "Distributed", desc: "Stream data ingestion pipeline with real-time throughput metrics and DLQ management.", web: "https://etl-dashboard-web.vercel.app", repo: "https://github.com/tanushkhare/etl-dashboard" },
+      { id: "05", name: "Fake News & Credibility Classifier", cat: "AI", desc: "Calibrated NLP credibility scoring assessing linguistic cues and clickbait anomalies.", web: "https://fake-news-classifier-web.vercel.app", repo: "https://github.com/tanushkhare/fake-news-classifier" },
+      { id: "06", name: "Collaborative Realtime Whiteboard", cat: "Distributed", desc: "Multi-client real-time canvas synchronization via persistent WebSocket connections.", web: "https://collaborative-realtime-whiteboard.vercel.app", repo: "https://github.com/tanushkhare/collaborative-realtime-whiteboard" },
+      { id: "07", name: "Placement Management Portal", cat: "Distributed", desc: "Academic eligibility screening and career application tracker with automated rule engines.", web: "https://placement-management-portal-web.vercel.app", repo: "https://github.com/tanushkhare/placement-management-portal" },
+      { id: "08", name: "Voice to SQL Query Engine", cat: "Distributed", desc: "AST SQL compiler with AST inspection and AST sandboxing against SQL injection.", web: "https://voice-to-sql-query-engine-web.vercel.app", repo: "https://github.com/tanushkhare/voice-to-sql-query-engine" },
+      { id: "09", name: "E-Commerce Microservices", cat: "Distributed", desc: "Atomic mutex checkout pipeline orchestrating distributed inventory and order fulfillment.", web: "https://ecommerce-microservices-web.vercel.app", repo: "https://github.com/tanushkhare/ecommerce-microservices" },
+      { id: "10", name: "Financial Sentiment Streaming", cat: "AI", desc: "FinBERT neural market sentiment stream parser evaluating headline polarity shifts.", web: "https://financial-sentiment-streaming-web.vercel.app", repo: "https://github.com/tanushkhare/financial-sentiment-streaming" },
+      { id: "11", name: "PySpark Distributed Log Analyzer", cat: "Distributed", desc: "Distributed log batch parsing, RDD partitioning, and HTTP surge telemetry diagnostics.", web: "https://pyspark-log-analyzer-web.vercel.app", repo: "https://github.com/tanushkhare/pyspark-log-analyzer" },
+      { id: "12", name: "FinTech Fraud Detection Pipeline", cat: "Security", desc: "Real-time risk scoring evaluating monetary thresholds and device fingerprint trust.", web: "https://fintech-fraud-detection-web.vercel.app", repo: "https://github.com/tanushkhare/fintech-fraud-detection" },
+      { id: "13", name: "MLOps Drift & Retraining Pipeline", cat: "Security", desc: "Continuous Population Stability Index (PSI) tracking and Kolmogorov-Smirnov drift triggers.", web: "https://mlops-retraining-pipeline.vercel.app", repo: "https://github.com/tanushkhare/mlops-retraining-pipeline" },
+      { id: "14", name: "Packet Sniffer & Anomaly Detector", cat: "Security", desc: "Network socket frame capture, TCP/UDP/ICMP inspection, and SYN-flood detection.", web: "https://packet-sniffer-anomaly-detector-web.vercel.app", repo: "https://github.com/tanushkhare/packet-sniffer-anomaly-detector" },
+      { id: "15", name: "AI Phishing Threat Detector", cat: "Security", desc: "Lexical Shannon entropy scoring, deceptive domain heuristics, and SSL validity inspection.", web: "https://phishing-detector-web.vercel.app", repo: "https://github.com/tanushkhare/phishing-detector" },
+      { id: "16", name: "DevOps CI/CD Telemetry Dashboard", cat: "Security", desc: "Prometheus cluster metrics harvester, zero-trust IAM server verification, and build tracking.", web: "https://devops-telemetry-dashboard.vercel.app", repo: "https://github.com/tanushkhare/devops-telemetry-dashboard" },
+      { id: "17", name: "Serverless Edge Function Router", cat: "Distributed", desc: "Sub-millisecond global routing and cold start latency profiling for edge compute functions.", web: "https://serverless-file-pipeline.vercel.app", repo: "https://github.com/tanushkhare/serverless-file-pipeline" },
+      { id: "18a", name: "Smart Face Attendance Biometrics", cat: "IoT", desc: "Biometric 128-d face embedding extraction and cosine similarity verification.", web: "https://smart-face-attendance-six.vercel.app", repo: "https://github.com/tanushkhare/smart-face-attendance" },
+      { id: "18b", name: "Smart Factory IoT Telemetry", cat: "IoT", desc: "MQTT sensor stream ingestion, ISO 10816 vibration analytics, and RUL estimation.", web: "https://smart-factory-iot-zeta.vercel.app", repo: "https://github.com/tanushkhare/Smart-Factory-IOT" },
+      { id: "19", name: "Spatial Asset Geofencing", cat: "IoT", desc: "Shapely Point-in-Polygon containment calculation and geospatial telemetry streaming.", web: "https://spatial-asset-geofencing.vercel.app", repo: "https://github.com/tanushkhare/spatial-asset-geofencing" },
+      { id: "20", name: "IoT Energy & Grid Monitoring", cat: "IoT", desc: "Smart grid harmonic power quality telemetry and edge anomaly load detection.", web: "https://iot-energy-monitoring.vercel.app", repo: "https://github.com/tanushkhare/iot-energy-monitoring" }
+    ];
+
+    function renderCards(data) {
+      const container = document.getElementById('projectGrid');
+      container.innerHTML = data.map(p => `
+        <div class="card">
+          <div>
+            <span class="card-tag">Project ${p.id} • ${p.cat}</span>
+            <h3 class="card-title">${p.name}</h3>
+            <p class="card-desc">${p.desc}</p>
+          </div>
+          <div class="card-actions">
+            <a href="${p.web}" target="_blank" class="btn btn-primary">Live Demo ↗</a>
+            <a href="${p.repo}" target="_blank" class="btn btn-secondary">GitHub →</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.pill').forEach(el => el.classList.remove('active'));
+      event.target.classList.add('active');
+      if (cat === 'all') {
+        renderCards(projects);
+      } else {
+        renderCards(projects.filter(p => p.cat === cat));
+      }
+    }
+
+    renderCards(projects);
+  </script>
+</body>
+</html>
