@@ -6,4 +6,4 @@ def test_hub_structure():
     with open(index_file, "r", encoding="utf-8") as f:
         content = f.read()
     assert "Tanush Khare" in content
-    assert "Microservice & AI Systems Portfolio" in content
+    assert "Distributed Systems & AI Engineering Portfolio" in content
