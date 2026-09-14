@@ -1,468 +1,263 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanush Khare | Systems & AI Engineering Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #090d16;
-      --card-bg: #0f172a;
-      --card-border: #1e293b;
-      --primary: #38bdf8;
-      --primary-hover: #0284c7;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent-green: #34d399;
-      --accent-red: #f87171;
-      --accent-amber: #fbbf24;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      padding-bottom: 4rem;
-    }
-    header {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 13, 22, 0.95) 100%);
-      border-bottom: 1px solid var(--card-border);
-      padding: 3.5rem 2rem 2.5rem;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      padding: 0.35rem 0.85rem;
-      background: rgba(56, 189, 248, 0.1);
-      color: var(--primary);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    h1 {
-      font-size: 2.75rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(to right, #f8fafc, #94a3b8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 750px;
-      margin: 0 auto 1.5rem;
-    }
-    .header-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #090d16;
-    }
-    .btn-primary:hover { background: var(--primary-hover); }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--card-border);
-      color: var(--text);
-    }
-    .btn-outline:hover {
-      background: var(--card-bg);
-      border-color: var(--text-muted);
-    }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .section-desc {
-      color: var(--text-muted);
-      margin-bottom: 1.75rem;
-      font-size: 1rem;
-    }
-    /* Health Grid */
-    .health-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-bottom: 3.5rem;
-    }
-    .health-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 0.5rem;
-      padding: 1rem 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: border-color 0.2s ease;
-    }
-    .health-card:hover { border-color: var(--primary); }
-    .health-info { font-size: 0.85rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
-    .health-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.35rem;
-      background: rgba(52, 211, 153, 0.1);
-      color: var(--accent-green);
-      border: 1px solid rgba(52, 211, 153, 0.25);
-    }
-    /* Flagship Section */
-    .flagship-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-    .flagship-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 0.75rem;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-    .flagship-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), #818cf8);
-    }
-    .flagship-header { margin-bottom: 1rem; }
-    .flagship-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
-    .flagship-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--primary);
-      margin-bottom: 0.75rem;
-    }
-    .flagship-body p {
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      margin-bottom: 0.75rem;
-    }
-    .deep-dive {
-      background: #090d16;
-      border: 1px solid #1e293b;
-      border-radius: 0.4rem;
-      padding: 0.75rem;
-      font-size: 0.8rem;
-      margin: 0.85rem 0;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .deep-dive-title { color: var(--primary); font-weight: 700; margin-bottom: 0.25rem; }
-    .flagship-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1.25rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    /* Catalog Table */
-    .catalog-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 0.5rem;
-      overflow: hidden;
-      font-size: 0.9rem;
-    }
-    .catalog-table th, .catalog-table td {
-      padding: 1rem 1.2rem;
-      text-align: left;
-      border-bottom: 1px solid var(--card-border);
-    }
-    .catalog-table th {
-      background: #090d16;
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .catalog-table tr:last-child td { border-bottom: none; }
-    .catalog-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
-    .mono-tag {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--primary);
-      font-size: 0.85rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanush Khare | Systems & AI Engineering Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090d16;
+            --card-bg: #0f172a;
+            --card-border: #1e293b;
+            --primary: #38bdf8;
+            --primary-hover: #0284c7;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #34d399;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+        header {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 13, 22, 0.95) 100%);
+            border-bottom: 1px solid var(--card-border);
+            padding: 3.5rem 2rem 2.5rem;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto 1.5rem;
+        }
+        .header-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #090d16;
+        }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text);
+        }
+        .btn-outline:hover {
+            background: var(--card-bg);
+            border-color: var(--text-muted);
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.75rem;
+            font-size: 1rem;
+        }
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3.5rem;
+        }
+        .health-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.5rem;
+            padding: 1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s ease;
+        }
+        .health-card:hover { border-color: var(--primary); }
+        .health-info { font-size: 0.85rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+        .health-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.35rem;
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+        }
+        .catalog-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        .catalog-table th, .catalog-table td {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .catalog-table th {
+            background: #090d16;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .catalog-table tr:last-child td { border-bottom: none; }
+        .catalog-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+        .mono-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
 
 <header>
-  <div class="hero-badge">Verified Engineering Portfolio</div>
-  <h1>Tanush Khare</h1>
-  <p class="subtitle">Full-Stack Software Engineer & Applied AI Systems Architect. Real asynchronous runtimes, persistent vector indexing, and statistical drift control planes.</p>
-  <div class="header-links">
-    <a href="https://github.com/tanushkhare" target="_blank" class="btn btn-primary">GitHub Profile</a>
-    <a href="#flagships" class="btn btn-outline">Flagship Architectures</a>
-    <a href="#health-grid" class="btn btn-outline">Live Microservice Probes</a>
-  </div>
+    <div class="hero-badge">Verified Engineering Portfolio</div>
+    <h1>Tanush Khare</h1>
+    <p class="subtitle">Full-Stack Software Engineer & Applied AI Systems Architect. Real asynchronous runtimes, persistent vector indexing, and statistical drift control planes.</p>
+    <div class="header-links">
+        <a href="https://github.com/tanushkhare" target="_blank" class="btn btn-primary">GitHub Profile</a>
+        <a href="#health-grid" class="btn btn-outline">Live Microservice Probes</a>
+    </div>
 </header>
 
 <div class="container">
+    <section id="health-grid">
+        <h2 class="section-title">⚡ Microservice Runtime Health Grid</h2>
+        <p class="section-desc">Active HTTP / WebSocket health endpoints across all 23 repositories, validated with unit test suites.</p>
+        <div class="health-grid" id="healthGrid"></div>
+    </section>
 
-  <!-- Microservice Status Grid -->
-  <section id="health-grid">
-    <h2 class="section-title">⚡ Microservice Runtime Health Grid</h2>
-    <p class="section-desc">Active HTTP / WebSocket health endpoints across all 23 repositories, validated with unit test suites.</p>
-    <div class="health-grid" id="healthGrid">
-      <!-- Generated dynamically -->
-    </div>
-  </section>
-
-  <!-- Flagship Projects -->
-  <section id="flagships">
-    <h2 class="section-title">🏆 Flagship Engineering Blueprints</h2>
-    <p class="section-desc">Core architectural showcases solving distributed concurrency, statistical drift, spatial computation, and vector persistence.</p>
-    <div class="flagship-grid">
-
-      <!-- Flagship 1 -->
-      <article class="flagship-card">
-        <div class="flagship-header">
-          <div class="flagship-tag">project_03_vector_rag_qa_system</div>
-          <h3 class="flagship-title">Vector RAG Retrieval Pipeline</h3>
-        </div>
-        <div class="flagship-body">
-          <p>Production-grade dense semantic retrieval system using ChromaDB persistent clients and all-MiniLM-L6-v2 embeddings.</p>
-          <div class="deep-dive">
-            <div class="deep-dive-title">ENGINEERING CHALLENGES OVERCOME:</div>
-            • Recursive character splitting with token boundary overlap.<br>
-            • Offloaded CPU tensor embeddings via asyncio.to_thread.<br>
-            • Sub-15ms p95 latency on Top-K vector lookups.
-          </div>
-        </div>
-        <div class="flagship-footer">
-          <span class="mono-tag">FastAPI • ChromaDB • PyTest</span>
-          <a href="https://github.com/tanushkhare/vector-rag-qa-system" target="_blank" class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Repository</a>
-        </div>
-      </article>
-
-      <!-- Flagship 2 -->
-      <article class="flagship-card">
-        <div class="flagship-header">
-          <div class="flagship-tag">project_13_mlops_retraining_pipeline</div>
-          <h3 class="flagship-title">MLOps Drift & Retraining Control Plane</h3>
-        </div>
-        <div class="flagship-body">
-          <p>Continuous model telemetry engine evaluating Population Stability Index (PSI) and two-sample Kolmogorov-Smirnov statistics.</p>
-          <div class="deep-dive">
-            <div class="deep-dive-title">ENGINEERING CHALLENGES OVERCOME:</div>
-            • Two-sample KS statistical significance testing (alpha = 0.05).<br>
-            • Closed-loop trigger executing model.fit() on PSI > 0.25.<br>
-            • Automated model versioning and SQLite artifact logging.
-          </div>
-        </div>
-        <div class="flagship-footer">
-          <span class="mono-tag">SciPy • Streamlit • MLflow</span>
-          <a href="https://github.com/tanushkhare/mlops-retraining-pipeline" target="_blank" class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Repository</a>
-        </div>
-      </article>
-
-      <!-- Flagship 3 -->
-      <article class="flagship-card">
-        <div class="flagship-header">
-          <div class="flagship-tag">project_19_spatial_asset_geofencing</div>
-          <h3 class="flagship-title">High-Throughput Spatial Geofencing</h3>
-        </div>
-        <div class="flagship-body">
-          <p>Computational geometry service evaluating high-frequency GPS coordinate streams against complex GeoJSON polygons.</p>
-          <div class="deep-dive">
-            <div class="deep-dive-title">ENGINEERING CHALLENGES OVERCOME:</div>
-            • STRtree spatial indexing to eliminate linear polygon scan.<br>
-            • Real-time boundary breach alerting with PyDeck visualization.<br>
-            • Sub-millisecond point-in-polygon containment verification.
-          </div>
-        </div>
-        <div class="flagship-footer">
-          <span class="mono-tag">Shapely • STRtree • PyDeck</span>
-          <a href="https://github.com/tanushkhare/spatial-asset-geofencing" target="_blank" class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Repository</a>
-        </div>
-      </article>
-
-      <!-- Flagship 4 -->
-      <article class="flagship-card">
-        <div class="flagship-header">
-          <div class="flagship-tag">project_09_ecommerce_microservices</div>
-          <h3 class="flagship-title">High-Concurrency Microservices</h3>
-        </div>
-        <div class="flagship-body">
-          <p>Decoupled order and inventory backend preventing stock deficits under race conditions and concurrent checkout bursts.</p>
-          <div class="deep-dive">
-            <div class="deep-dive-title">ENGINEERING CHALLENGES OVERCOME:</div>
-            • Per-product asyncio.Lock mutex boundaries.<br>
-            • Atomic SQL updates: WHERE stock >= qty.<br>
-            • Zero overselling confirmed under 500 concurrent workers.
-          </div>
-        </div>
-        <div class="flagship-footer">
-          <span class="mono-tag">FastAPI • Concurrency • PyTest</span>
-          <a href="https://github.com/tanushkhare/ecommerce-microservices" target="_blank" class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Repository</a>
-        </div>
-      </article>
-
-      <!-- Flagship 5 -->
-      <article class="flagship-card">
-        <div class="flagship-header">
-          <div class="flagship-tag">project_01_ai_resume_analyzer</div>
-          <h3 class="flagship-title">NLP Tech Taxonomy Resume Parser</h3>
-        </div>
-        <div class="flagship-body">
-          <p>Document ingestion pipeline extracting technical skill taxonomies, experience seniority heuristics, and ATS gap scores.</p>
-          <div class="deep-dive">
-            <div class="deep-dive-title">ENGINEERING CHALLENGES OVERCOME:</div>
-            • spaCy Named Entity Recognition across non-standard schemas.<br>
-            • Structured stream extraction for PDF/DOCX via pdfplumber.<br>
-            • Contextual skill-gap benchmarking against job descriptions.
-          </div>
-        </div>
-        <div class="flagship-footer">
-          <span class="mono-tag">spaCy • pdfplumber • NLP</span>
-          <a href="https://github.com/tanushkhare/ai-resume-analyzer" target="_blank" class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Repository</a>
-        </div>
-      </article>
-
-      <!-- Flagship 6 -->
-      <article class="flagship-card">
-        <div class="flagship-header">
-          <div class="flagship-tag">project_06_collaborative_realtime_whiteboard</div>
-          <h3 class="flagship-title">Real-Time Collaborative Whiteboard</h3>
-        </div>
-        <div class="flagship-body">
-          <p>Multi-room real-time vector canvas synchronizer operating over low-latency ASGI WebSockets with session recovery.</p>
-          <div class="deep-dive">
-            <div class="deep-dive-title">ENGINEERING CHALLENGES OVERCOME:</div>
-            • Protected connection manager catching JSONDecodeErrors.<br>
-            • Replay canvas history sync for reconnecting clients.<br>
-            • Sub-50ms peer coordinate broadcast latency.
-          </div>
-        </div>
-        <div class="flagship-footer">
-          <span class="mono-tag">WebSockets • Canvas • FastAPI</span>
-          <a href="https://github.com/tanushkhare/collaborative-realtime-whiteboard" target="_blank" class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Repository</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- Complete 23 Repository Catalog -->
-  <section id="catalog">
-    <h2 class="section-title">📦 Complete 23-Repository Engineering Catalog</h2>
-    <p class="section-desc">Audited and standardized microservices across AI/ML, distributed systems, telemetry, and security.</p>
-    <table class="catalog-table">
-      <thead>
-        <tr>
-          <th>Repository</th>
-          <th>Domain / Core Architecture</th>
-          <th>Verified Capability</th>
-          <th>Test Verification</th>
-        </tr>
-      </thead>
-      <tbody id="catalogBody">
-        <!-- Injected via JavaScript -->
-      </tbody>
-    </table>
-  </section>
-
+    <section id="catalog">
+        <h2 class="section-title">📦 Complete 23-Repository Engineering Catalog</h2>
+        <p class="section-desc">Audited and standardized microservices across AI/ML, distributed systems, telemetry, and security.</p>
+        <table class="catalog-table">
+            <thead>
+                <tr>
+                    <th>Repository</th>
+                    <th>Domain / Core Architecture</th>
+                    <th>Verified Capability</th>
+                    <th>Test Status</th>
+                </tr>
+            </thead>
+            <tbody id="catalogBody"></tbody>
+        </table>
+    </section>
 </div>
 
 <script>
-  const repos = [
-    { name: "ai-resume-analyzer", domain: "NLP / Document Parsing", cap: "spaCy NER & pdfplumber stream extraction", tests: "2/2 Passed" },
-    { name: "autonomous-research-assistant", domain: "Autonomous Agents", cap: "Live search tool wrappers & citation extraction", tests: "2/2 Passed" },
-    { name: "vector-rag-qa-system", domain: "Applied RAG / Vector DB", cap: "Recursive character chunking & ChromaDB store", tests: "2/2 Passed" },
-    { name: "ai-meeting-summarizer", domain: "Audio ML / Speech-to-Text", cap: "Whisper transcript processing & action item parse", tests: "2/2 Passed" },
-    { name: "etl-dashboard", domain: "Data Pipelines", cap: "Non-blocking async telemetry & ClickHouse sinks", tests: "2/2 Passed" },
-    { name: "fake-news-classifier", domain: "Transformer NLP", cap: "DistilBERT inference & logit calibration", tests: "3/3 Passed" },
-    { name: "collaborative-realtime-whiteboard", domain: "Real-Time WebSockets", cap: "Sub-50ms vector stroke broadcast & recovery", tests: "3/3 Passed" },
-    { name: "placement-management-portal", domain: "Relational CRUD", cap: "CGPA eligibility filtering & recruitment tracking", tests: "3/3 Passed" },
-    { name: "voice-to-sql-query-engine", domain: "Compiler / AST Security", cap: "sqlparse AST sandboxing & table whitelist", tests: "4/4 Passed" },
-    { name: "ecommerce-microservices", domain: "Distributed Systems", cap: "Mutex locking & atomic inventory updates", tests: "4/4 Passed" },
-    { name: "financial-sentiment-streaming", domain: "Streaming NLP", cap: "ProsusAI/FinBERT & Server-Sent Events (SSE)", tests: "3/3 Passed" },
-    { name: "pyspark-log-analyzer", domain: "Big Data Processing", cap: "Partitioned Spark RDD status code aggregation", tests: "3/3 Passed" },
-    { name: "fintech-fraud-detection", domain: "Financial ML", cap: "Isolation Forest transaction anomaly scoring", tests: "3/3 Passed" },
-    { name: "mlops-retraining-pipeline", domain: "MLOps Control Plane", cap: "KS-test & PSI statistical drift retraining", tests: "2/2 Passed" },
-    { name: "packet-sniffer-anomaly-detector", domain: "Network Security", cap: "Scapy packet frame parsing & SYN-flood alert", tests: "4/4 Passed" },
-    { name: "phishing-detector", domain: "Cybersecurity", cap: "Shannon entropy lexical scoring & TLD checks", tests: "3/3 Passed" },
-    { name: "devops-telemetry-dashboard", domain: "Observability / IAM", cap: "Zero-trust client host check & Bearer token auth", tests: "7/7 Passed" },
-    { name: "serverless-file-pipeline", domain: "Event-Driven Cloud", cap: "S3 notification processing & async stages", tests: "2/2 Passed" },
-    { name: "smart-face-attendance", domain: "Biometric Vision", cap: "Vector cosine similarity & attendance logging", tests: "3/3 Passed" },
-    { name: "smart-factory-iot", domain: "Industrial IoT", cap: "ISO 10816 vibration curves & RUL regression", tests: "3/3 Passed" },
-    { name: "spatial-asset-geofencing", domain: "Geospatial Systems", cap: "Shapely STRtree indexing & PyDeck visualization", tests: "3/3 Passed" },
-    { name: "iot-energy-monitoring", domain: "Smart Grid Telemetry", cap: "Active power calculation & over-voltage alarms", tests: "3/3 Passed" },
-    { name: "realtime-chatbot", domain: "Asynchronous Messaging", cap: "Resilient WebSocket loop & JSON error isolation", tests: "3/3 Passed" }
-  ];
+    const repos = [
+        { name: "ai-resume-analyzer", domain: "NLP / Document Parsing", cap: "spaCy NER & pdfplumber stream extraction", tests: "2/2 Passed" },
+        { name: "autonomous-research-assistant", domain: "Autonomous Agents", cap: "Live search tool wrappers & citation extraction", tests: "2/2 Passed" },
+        { name: "vector-rag-qa-system", domain: "Applied RAG / Vector DB", cap: "Recursive character chunking & ChromaDB store", tests: "2/2 Passed" },
+        { name: "ai-meeting-summarizer", domain: "Audio ML / Speech-to-Text", cap: "Whisper transcript processing & action item parse", tests: "2/2 Passed" },
+        { name: "etl-dashboard", domain: "Data Pipelines", cap: "Non-blocking async telemetry & ClickHouse sinks", tests: "2/2 Passed" },
+        { name: "fake-news-classifier", domain: "Transformer NLP", cap: "DistilBERT inference & logit calibration", tests: "3/3 Passed" },
+        { name: "collaborative-realtime-whiteboard", domain: "Real-Time WebSockets", cap: "Sub-50ms vector stroke broadcast & recovery", tests: "3/3 Passed" },
+        { name: "placement-management-portal", domain: "Relational CRUD", cap: "CGPA eligibility filtering & recruitment tracking", tests: "3/3 Passed" },
+        { name: "voice-to-sql-query-engine", domain: "Compiler / AST Security", cap: "sqlparse AST sandboxing & table whitelist", tests: "4/4 Passed" },
+        { name: "ecommerce-microservices", domain: "Distributed Systems", cap: "Mutex locking & atomic inventory updates", tests: "4/4 Passed" },
+        { name: "financial-sentiment-streaming", domain: "Streaming NLP", cap: "ProsusAI/FinBERT & Server-Sent Events (SSE)", tests: "3/3 Passed" },
+        { name: "pyspark-log-analyzer", domain: "Big Data Processing", cap: "Partitioned Spark RDD status code aggregation", tests: "3/3 Passed" },
+        { name: "fintech-fraud-detection", domain: "Financial ML", cap: "Isolation Forest transaction anomaly scoring", tests: "3/3 Passed" },
+        { name: "mlops-retraining-pipeline", domain: "MLOps Control Plane", cap: "KS-test & PSI statistical drift retraining", tests: "2/2 Passed" },
+        { name: "packet-sniffer-anomaly-detector", domain: "Network Security", cap: "Scapy packet frame parsing & SYN-flood alert", tests: "4/4 Passed" },
+        { name: "phishing-detector", domain: "Cybersecurity", cap: "Shannon entropy lexical scoring & TLD checks", tests: "3/3 Passed" },
+        { name: "devops-telemetry-dashboard", domain: "Observability / IAM", cap: "Zero-trust client host check & Bearer token auth", tests: "7/7 Passed" },
+        { name: "serverless-file-pipeline", domain: "Event-Driven Cloud", cap: "S3 notification processing & async stages", tests: "2/2 Passed" },
+        { name: "smart-face-attendance", domain: "Biometric Vision", cap: "Vector cosine similarity & attendance logging", tests: "3/3 Passed" },
+        { name: "smart-factory-iot", domain: "Industrial IoT", cap: "ISO 10816 vibration curves & RUL regression", tests: "3/3 Passed" },
+        { name: "spatial-asset-geofencing", domain: "Geospatial Systems", cap: "Shapely STRtree indexing & PyDeck visualization", tests: "3/3 Passed" },
+        { name: "iot-energy-monitoring", domain: "Smart Grid Telemetry", cap: "Active power calculation & over-voltage alarms", tests: "3/3 Passed" },
+        { name: "realtime-chatbot", domain: "Asynchronous Messaging", cap: "Resilient WebSocket loop & JSON error isolation", tests: "3/3 Passed" }
+    ];
 
-  const grid = document.getElementById("healthGrid");
-  const table = document.getElementById("catalogBody");
+    const grid = document.getElementById("healthGrid");
+    const table = document.getElementById("catalogBody");
 
-  repos.forEach(r => {
-    // Health Card
-    const card = document.createElement("div");
-    card.className = "health-card";
-    card.innerHTML = `
-      <span class="health-info">${r.name}</span>
-      <span class="health-status">● OPERATIONAL</span>
-    `;
-    grid.appendChild(card);
+    repos.forEach(r => {
+        const card = document.createElement("div");
+        card.className = "health-card";
+        card.innerHTML = `
+            <span class="health-info"><a href="https://github.com/tanushkhare/${r.name}" target="_blank">${r.name}</a></span>
+            <span class="health-status">● OPERATIONAL</span>
+        `;
+        grid.appendChild(card);
 
-    // Table Row
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><strong>${r.name}</strong></td>
-      <td>${r.domain}</td>
-      <td>${r.cap}</td>
-      <td><span class="mono-tag" style="color:var(--accent-green);">${r.tests}</span></td>
-    `;
-    table.appendChild(tr);
-  });
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td><a href="https://github.com/tanushkhare/${r.name}" target="_blank"><strong>${r.name}</strong></a></td>
+            <td>${r.domain}</td>
+            <td>${r.cap}</td>
+            <td><span class="mono-tag" style="color:var(--accent-green);">${r.tests}</span></td>
+        `;
+        table.appendChild(tr);
+    });
 </script>
 
 </body>
